@@ -25,18 +25,78 @@
 
 ``` css
 /* 布局 */
-.g-sd{float:left;width:300px;}
+.g-sd {
+  float: left;
+  width: 300px;
+}
 /* 模块 */
-.m-logo{width:200px;height:50px;}
+.m-logo {
+  width: 200px;
+  height: 50px;
+}
 /* 元件 */
-.u-btn{height:20px;border:1px solid #333;}
+.u-btn {
+  height: 20px;
+  border: 1px solid #333;
+}
 /* 功能 */
-.f-tac{text-align:center;}
+.f-tac {
+  text-align: center;
+}
 /* 皮肤 */
-.s-fc,a.s-fc:hover{color:#fff;}
+.s-fc,a.s-fc:hover {
+  color: #fff;
+}
 ```
 
 ## 代码格式
+
+### 空格
+
+#### **选择器** 与 **{** 之间必须包含空格。
+ ----
+
+``` css
+.selector {
+}
+```
+
+#### **属性名** 与之后的 **:** 之间不允许包含空格， **:** 与 **属性值** 之间必须包含空格。
+----
+> 
+``` css
+.selector {
+  margin: 0;
+}
+```
+
+#### 当一个 css样式 包含多个 选择器 时，每个选择器声明必须独占一行。
+---
+``` css
+.post,
+.page,
+.comment {
+  line-height: 1.5;
+}
+
+```
+#### **>** 、 **+ **、 **~**  选择器的两边各保留一个空格。
+---
+
+``` css 
+main > nav {
+  padding: 10px;
+}
+
+label + input {
+  margin-left: 5px;
+}
+
+input:checked ~ button {
+  background-color: #69C;
+}
+
+```
 
 ### 省略值为0时的单位
 
@@ -44,25 +104,46 @@
 如果是0开始的小数，前面的0可以省略不写
 
 ``` css
-.m-box{margin:0 10px;background-position:50% 0;}
-body{opacity: .6;text-shadow: 1px 1px 5px rgba(0, 0, 0, .5);}
+.m-box {
+  margin: 0 10px;
+  background-position: 50% 0;
+}
+body {
+  opacity: .6;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, .5);
+}
 ```
 
 ### 私有在前，标准在后
 
 先写带有浏览器私有标志的，后写W3C标准的。
 
+---
+
+> 带私有前缀的属性由长到短排列，按冒号位置对齐。
+> 
+> 标准属性放在最后，按冒号对齐方便阅读，也便于在编辑器内进行多行编辑。
+
 ``` css
-.m-box{-webkit-box-shadow:0 0 0 #000;-moz-box-shadow:0 0 0 #000;box-shadow:0 0 0 #000;}
+.m-box {
+  -webkit-box-shadow: 0 0 0 #000;
+     -moz-box-shadow: 0 0 0 #000;
+          box-shadow: 0 0 0 #000;
+}
 ```
+
 
 ### 使用单引号
 
 省略url引用中的引号，其他需要引号的地方使用单引号。
 
 ``` css
-.m-box{background:url(bg.png);}
-.m-box:after{content:'.';}
+.m-box {
+  background: url(bg.png);
+}
+.m-box:after {
+  content: '.';
+}
 ```
 
 ### 使用16进制表示颜色值
@@ -70,7 +151,10 @@ body{opacity: .6;text-shadow: 1px 1px 5px rgba(0, 0, 0, .5);}
 除非你需要透明度而使用rgba，否则都使用#f0f0f0这样的表示方法，并尽量缩写。
 
 ``` css
- .m-box{color:#f00;background:rgba(0,0,0,0.5);}
+ .m-box {
+   color: #f00;
+   background: rgba(0,0,0,0.5);
+}
 ```
 
 ### 根据属性的重要性按顺序书写
@@ -87,38 +171,70 @@ body{opacity: .6;text-shadow: 1px 1px 5px rgba(0, 0, 0, .5);}
 | top         | min-width  |  background      |
 
 ``` css
-.m-box{position:relative;width:600px;margin:0 auto 10px;text-align:center;color:#000;}
+.m-box {
+  position: relative;
+  width: 600px;
+  margin: 0 auto 10px;
+  text-align: center;
+  color: #000;
+}
 ```
 如果属性间存在关联性，则不要隔开写。
 ``` css
 /* 这里的height和line-height有关联性 */
-.m-box{position:relative;height:20px;line-height:20px;padding:5px;color:#000;}
+.m-box {
+  position: relative;
+  height: 20px;
+  line-height: 20px;
+  padding: 5px;
+  color: #000;
+}
 ```
 
 ### 选择器顺序
   * 从大到小（以选择器的范围为准）
     ``` css
      /* 从大到小 */
-     .m-list p{margin:0;padding:0;}
-     .m-list p.part{margin:1px;padding:1px;}
+     .m-list p {
+       margin: 0;
+       padding: 0;
+      }
+     .m-list p.part {
+       margin: 1px;
+       padding: 1px;
+      }
     ```
   * 从低到高（以等级上的高低为准）
     ``` css
      /* 从低到高 */
-     .m-logo a{color:#f00;}
-     .m-logo a:hover{color:#fff;}
+     .m-logo a {
+       color: #f00;
+      }
+     .m-logo a:hover {
+       color:#fff;
+      }
     ```
   * 从先到后（以结构上的先后为准）
     ``` css
      /* 从先到后 */
-     .g-hd{height:60px;}
-     .g-bd{height:60px;}
-     .g-ft{height:60px;}
+     .g-hd {
+       height:60px;
+      }
+     .g-bd {
+       height:60px;
+      }
+     .g-ft {
+       height:60px;
+      }
     ```
   * 从父到子（以结构上的嵌套为准）
     ``` css
-     .m-list{width:300px;}
-     .m-list .itm{float:left;}
+     .m-list {
+       width: 300px;
+      }
+     .m-list .itm {
+       float: left;
+      }
     ```
 
 ## 最佳实践
@@ -215,6 +331,6 @@ body{opacity: .6;text-shadow: 1px 1px 5px rgba(0, 0, 0, .5);}
 
 参考资料
 
-  [网易nec](http://nec.netease.com/standard)
+  [网易NEC](http://nec.netease.com/standard)
   
   [百度FEX编码规范](https://github.com/fex-team/styleguide/blob/master/css.md)
